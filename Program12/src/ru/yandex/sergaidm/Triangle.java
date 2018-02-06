@@ -41,15 +41,15 @@ public class Triangle {
 		this.c = c;
 	}
 
-	public double getArea(double a, double b, double c) {
+	public double getArea() {
 
 		double p = (a + b + c) / 2;
-		double S = Math.sqrt(p * (p - a) * (p - b) * (p - c));
-		return S;
+		double s = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+		return s;
 
 	}
 
-	public boolean realTriangle(double a, double b, double c) {
+	public boolean realTriangle() {
 
 		boolean r;
 		if (((a + b) > c) & ((a + c) > b) & ((b + c) > a)) {
