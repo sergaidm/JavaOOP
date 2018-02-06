@@ -15,10 +15,6 @@ public class Point {
 		super();
 	}
 
-	public double distance(Point p) {
-		return Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2));
-	}
-
 	public double getX() {
 		return x;
 	}
@@ -33,6 +29,10 @@ public class Point {
 
 	public void setY(double y) {
 		this.y = y;
+	}
+
+	public double distance(Point p) {
+		return Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2));
 	}
 
 	@Override

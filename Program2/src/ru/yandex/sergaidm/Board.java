@@ -35,13 +35,13 @@ public class Board {
 
 	public double areaOfAllFig() {
 
-		double S = 0;
+		double s = 0;
 		for (int i = 0; i < figure.length; i++) {
 			if (figure[i] != null) {
-				S += figure[i].getArea();
+				s += figure[i].getArea();
 			}
 		}
-		return S;
+		return s;
 	}
 
 	public String toString() {

@@ -1,10 +1,10 @@
 package ru.yandex.sergaidm;
 
-//Create abstract class Shape. Create class Point with two properties: double x and double y.
-//Create classes - subclasses of Shape with properties of class Point, which describe three geometric shapes.
-//Create class Board. Board is divided into 4 parts, in each of which you can place one of the figures.
-//The board should have methods that put figure to the board and remove figure from the board. 
-//There must also be method that displays information about all figures on the board and their total area.
+/*Create abstract class Shape. Create class Point with two properties: double x and double y.
+Create classes - subclasses of Shape with properties of class Point, which describe three geometric shapes.
+Create class Board. Board is divided into 4 parts, in each of which you can place one of the figures.
+The board should have methods that put figure to the board and remove figure from the board. 
+There must also be method that displays information about all figures on the board and their total area.*/
 
 public class Main {
 

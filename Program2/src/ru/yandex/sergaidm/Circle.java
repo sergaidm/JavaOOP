@@ -2,13 +2,13 @@ package ru.yandex.sergaidm;
 
 public class Circle extends Shape {
 
-	private Point A;
-	private Point O;
+	private Point a;
+	private Point o;
 
 	public Circle(Point a, Point o) {
 		super();
-		A = a;
-		O = o;
+		this.a = a;
+		this.o = o;
 	}
 
 	public Circle() {
@@ -16,34 +16,34 @@ public class Circle extends Shape {
 	}
 
 	public Point getA() {
-		return A;
+		return a;
 	}
 
 	public void setA(Point a) {
-		A = a;
+		a = a;
 	}
 
 	public Point getO() {
-		return O;
+		return o;
 	}
 
 	public void setO(Point o) {
-		O = o;
+		o = o;
 	}
 
 	@Override
 	public double getPerimetr() {
-		return 2 * Math.PI * A.distance(O);
+		return 2 * Math.PI * a.distance(o);
 	}
 
 	@Override
 	public double getArea() {
-		return Math.PI * Math.pow(A.distance(O), 2);
+		return Math.PI * Math.pow(a.distance(o), 2);
 	}
 
 	@Override
 	public String toString() {
-		return "Circle [A=" + A + ", O=" + O + ", getPerimetr()=" + getPerimetr() + ", getArea()=" + getArea() + "]";
+		return "Circle [A=" + a + ", O=" + o + ", getPerimetr()=" + getPerimetr() + ", getArea()=" + getArea() + "]";
 	}
 
 }
