@@ -1,9 +1,9 @@
 package ru.yandex.sergaidm;
 
-//Describe the class "Vector3d" (a vector in a three-dimensional coordinate system). 
-//Properties of this class must be coordinates of vector. 
-//For this class create methods of addition, scalar and vector multiplication of vectors. 
-//Create several objects of this class and test them.
+/*Describe the class "Vector3d" (a vector in a three-dimensional coordinate system). 
+Properties of this class must be coordinates of vector. 
+For this class create methods of addition, scalar and vector multiplication of vectors. 
+Create several objects of this class and test them.*/
 
 public class Main {
 
