@@ -18,6 +18,7 @@ public class Main {
 			gr.addStudentToGroup(three, 5);
 			gr.addStudentToGroup(four, 7);
 			gr.addStudentToGroup(five, 9);
+			gr.addStudentToGroup(one, 11);
 		} catch (GroupException e) {
 			System.out.println(e);
 		}
