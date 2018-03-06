@@ -63,10 +63,23 @@ public class Group {
 		}
 	}
 
-	public static void saveToFile(Group group, File file) {
+	private static String textToCSV(Group group) {
+		StringBuilder sb = new StringBuilder();
 		String text = group.toString();
+		text = text.substring(text.indexOf("("), text.lastIndexOf("]"));
+		text = text.replace("), ", "");
+		text = text.replace(" ", "");
+		text = text.replace(")", "");
+		String t[] = text.split("[(]");
+		for (String string : t) {
+			sb.append(string + System.lineSeparator());
+		}
+		return sb.toString();
+	}
+
+	public static void saveToFile(Group group, File file) {
 		try (PrintWriter pw = new PrintWriter(file)) {
-			pw.println(text);
+			pw.println(textToCSV(group));
 		} catch (IOException e) {
 			System.out.println(e);
 		}

@@ -35,11 +35,11 @@ public class Main {
 			System.out.println(e);
 		}
 		System.out.println("\n" + gr + "\n");
-		
+
 		File groupList = new File("groupList.txt");
 		Group.saveToFile(gr, groupList);
 
-		System.out.println("\n" + "Group list saved to specified file" + "\n");
-		
+		System.out.println("Group list saved to specified file");
+
 	}
 }
