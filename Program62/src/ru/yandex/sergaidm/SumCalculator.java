@@ -21,7 +21,7 @@ public class SumCalculator implements Callable<Long> {
 		this.to = to;
 	}
 
-	public static long simpleSum—alculation(int[] array) {
+	public static long simpleSumCalculation(int[] array) {
 		long sum = 0;
 		for (int i = 0; i < array.length; i++) {
 			sum += array[i];
@@ -29,7 +29,7 @@ public class SumCalculator implements Callable<Long> {
 		return sum;
 	}
 
-	public static long multithreadingSum—alculation(int[] array, int threadsCount, int partLength) {
+	public static long multithreadingSumCalculation(int[] array, int threadsCount, int partLength) {
 
 		ExecutorService service = Executors.newFixedThreadPool(threadsCount);
 		CompletionService<Long> cS = new ExecutorCompletionService<>(service);

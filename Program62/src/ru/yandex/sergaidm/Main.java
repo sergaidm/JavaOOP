@@ -15,12 +15,12 @@ public class Main {
 		long tEnd = 0;
 
 		tBegin = System.currentTimeMillis();
-		System.out.println("Result = " + SumCalculator.multithreadingSum—alculation(array, THREADS_COUNT, PART_LENGTH));
+		System.out.println("Result = " + SumCalculator.multithreadingSumCalculation(array, THREADS_COUNT, PART_LENGTH));
 		tEnd = System.currentTimeMillis();
 		System.out.println("Time of multithreading sum calculation: " + (tEnd - tBegin) + " ms");
 
 		tBegin = System.currentTimeMillis();
-		System.out.println("Result = " + SumCalculator.simpleSum—alculation(array));
+		System.out.println("Result = " + SumCalculator.simpleSumCalculation(array));
 		tEnd = System.currentTimeMillis();
 		System.out.println("Time of simple sum calculation: " + (tEnd - tBegin) + " ms");
 
