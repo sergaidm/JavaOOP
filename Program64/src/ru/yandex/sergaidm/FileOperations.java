@@ -23,6 +23,10 @@ public class FileOperations implements Runnable {
 		this.number = number;
 	}
 
+	public FileOperations() {
+		super();
+	}
+
 	public static void createFiles(File folderSource, int number) {
 		File[] files = new File[number];
 
