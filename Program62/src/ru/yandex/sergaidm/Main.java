@@ -11,7 +11,7 @@ public class Main {
 			array[i] = (int) (Math.random() * 9);
 		}
 
-		long tBegin = 0;
+		long Begin = 0;
 		long tEnd = 0;
 
 		tBegin = System.currentTimeMillis();
