@@ -1,0 +1,70 @@
+package ru.yandex.sergaidm;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+public class FileWatcher implements Runnable {
+
+	private File mainFolder;
+
+	public FileWatcher(File mainFolder) {
+		super();
+		this.mainFolder = mainFolder;
+	}
+
+	public FileWatcher() {
+		super();
+	}
+
+	public File getMainFolder() {
+		return mainFolder;
+	}
+
+	private static String getFolderInfo(File mainFolder) {
+		if (mainFolder == null) {
+			return "None";
+		}
+		File[] fileArray = mainFolder.listFiles();
+
+		int l = fileArray.length;
+		String text = "";
+		System.out.println(fileArray.length);
+
+		if (l > fileArray.length) {
+			text = "New file is created" + System.lineSeparator();
+		}
+		if (l < fileArray.length) {
+			text = "File is deleted" + System.lineSeparator();
+		}
+		return text;
+	}
+
+	public static void startFileWatcher() {
+		File mainFolder = new File(".");
+		ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+		service.scheduleAtFixedRate(new FileWatcher(mainFolder), 0, 1, TimeUnit.SECONDS);
+		try {
+			service.awaitTermination(60, TimeUnit.SECONDS);
+		} catch (InterruptedException e) {
+			System.out.println(e);
+		} finally {
+			service.shutdown();
+			if (service.isShutdown() == true) {
+				System.out.println("File watcher completed its work");
+			}
+		}
+	}
+
+	@Override
+	public void run() {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd:MM:yyyy   hh:mm:ss");
+		System.out.println(sdf.format(System.currentTimeMillis()));
+		System.out.println(getFolderInfo(mainFolder));
+
+	}
+
+}
