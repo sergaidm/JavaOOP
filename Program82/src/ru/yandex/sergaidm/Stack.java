@@ -40,18 +40,14 @@ public class Stack {
 	public void setBlackList(BlackList blackList) {
 		this.blackList = blackList;
 	}
-
+	
 	public boolean stackEmpty() {
-		boolean res = true;
 		for (int i = 0; i < stack.length; i++) {
 			if (stack[i] != null) {
-				res = false;
+				return  false;
 			}
-			if (stack == null) {
-				res = true;
-			} 
 		}
-		return res;
+		return true;
 	}
 
 	public void addToStack(Object obj, BlackList bl) throws ArrayIndexOutOfBoundsException {
