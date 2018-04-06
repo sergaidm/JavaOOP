@@ -4,17 +4,16 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		SynchClass sClass = new SynchClass(2);
-		Harbor harbor = new Harbor(sClass);
+		Harbor harbor = new Harbor(2);
 		
-		Thread shipOne = new Thread(harbor, "Arabella");
-		Thread shipTwo = new Thread(harbor, "Sinko L'iagas");
-		Thread shipThree = new Thread(harbor, "La Fudr");
+		Ship shipOne = new Ship("Arabella", 10);
+		Ship shipTwo = new Ship("Sinko L'iagas", 10);
+		Ship shipThree = new Ship("La Fudr", 10);
 
-		shipOne.start();
-		shipTwo.start();
-		shipThree.start();
-
+		harbor.harborWork(shipOne);
+		harbor.harborWork(shipTwo);
+		harbor.harborWork(shipThree);
+		harbor.harborEndWork();
 	}
 
 }

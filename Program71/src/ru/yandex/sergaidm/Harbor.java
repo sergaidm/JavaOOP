@@ -1,21 +1,30 @@
 package ru.yandex.sergaidm;
 
-public class Harbor implements Runnable {
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-	private SynchClass sClass;
+public class Harbor {
 
-	public Harbor(SynchClass sClass) {
+	private int docks = 2;
+	ExecutorService harbor;
+
+	public Harbor(int docks) {
 		super();
-		this.sClass = sClass;
+		this.docks = docks;
+		harbor = Executors.newFixedThreadPool(docks);
 	}
 
 	public Harbor() {
 		super();
+		harbor = Executors.newFixedThreadPool(docks);
 	}
 
-	@Override
-	public void run() {
-		sClass.unloadingShip(10);
+	public void harborWork(Ship ship) {
+		harbor.submit(ship);
+	}
+	
+	public void harborEndWork() {
+		harbor.shutdown();
 	}
 
 }
