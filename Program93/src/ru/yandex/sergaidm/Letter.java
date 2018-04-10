@@ -59,29 +59,24 @@ public class Letter implements Comparator<Letter> {
 	}
 
 	public void lettersCounter(List<String> list) {
-		letters = new ArrayList<>();
-		Letter a = new Letter("a");
-		Letter b = new Letter("b");
-		Letter c = new Letter("c");
-		Letter d = new Letter("d");
-		Letter e = new Letter("e");
-		letters.add(a);
-		letters.add(b);
-		letters.add(c);
-		letters.add(d);
-		letters.add(e);
-		Iterator<Letter> countPosition = letters.iterator();
-		Iterator<String> counter = list.iterator();
-		for (int i = 0; i < letters.size(); i++) {
-			System.out.print(countPosition.next().getLetter());
+		Letter[] letarr = { new Letter("a"), new Letter("b"), new Letter("c"), new Letter("d"), new Letter("e"),
+				new Letter("f"), new Letter("g"), new Letter("h"), new Letter("i"), new Letter("j"), new Letter("k"),
+				new Letter("l"), new Letter("m"), new Letter("n"), new Letter("o"), new Letter("p"), new Letter("q"),
+				new Letter("r"), new Letter("s"), new Letter("t"), new Letter("u"), new Letter("v"), new Letter("w"),
+				new Letter("x"), new Letter("y"), new Letter("z") };
+		letters = Arrays.asList(letarr);
+		Iterator<String> counter = list.iterator();		
+		for (int i = 0; i < list.size(); i++) {
 			for (; counter.hasNext();) {
+				Iterator<Letter> countPosition = letters.iterator();				
 				if (counter.next().equalsIgnoreCase(countPosition.next().getLetter())) {
 					lettersNumber++;
 				}
-			}			
+			}
 		}
+		System.out.println();
 		for (int i = 0; i < letters.size(); i++) {
-			letters.sort(c);
+			letters.sort(letters.get(i));
 			System.out.println(
 					"The letter '" + letters.get(i).getLetter() + "' repeat " + lettersNumber + " times in the text");
 		}
