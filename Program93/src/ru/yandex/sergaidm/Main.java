@@ -6,11 +6,11 @@ public class Main {
 
 	public static void main(String[] args) {		
 		
-		Letter tr = new Letter();
+		Letter letter = new Letter();
 		File file = new File("Text.txt");
-		String text = tr.textFromFile(file);
-		tr.textToLetters(text);
-		tr.lettersCounter(tr.textToLetters(text));
+		String text = letter.textFromFile(file);
+		letter.textToLetters(text);
+		letter.lettersCounter(letter.textToLetters(text));
 		
 	}
 
