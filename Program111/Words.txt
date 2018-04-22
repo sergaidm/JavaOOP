@@ -1,0 +1,28 @@
+Sergey -> Сергей
+at -> на
+best -> лучший
+come -> прийти
+day -> день
+die -> умирать
+every -> каждый
+five -> пять
+for -> за
+go -> ходить
+heavy -> тяжёлый
+i -> я
+is -> это
+metall -> металл
+my -> мой
+name -> имя
+of -> 
+score -> счёт
+test -> тест
+text -> текст
+the -> 
+this -> этот
+to -> в
+victory -> победа
+we -> мы
+will -> будет
+work -> работа
+
