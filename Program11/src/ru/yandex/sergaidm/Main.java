@@ -1,8 +1,5 @@
 package ru.yandex.sergaidm;
 
-/*Describe the class "Cat". Give it the properties and methods. 
-Create several objects of this class. Use these objects.*/
-
 public class Main {
 
 	public static void main(String[] args) {
