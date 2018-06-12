@@ -31,13 +31,13 @@ public class Point {
 		this.y = y;
 	}
 
-	public double distance(Point p) {
+	public double getDistance(Point p) {
 		return Math.sqrt(Math.pow((p.getX() - x), 2) + Math.pow((p.getY() - y), 2));
 	}
 
 	@Override
 	public String toString() {
-		return "Point [x=" + x + ", y=" + y + "]";
+		return "Point [x = " + x + ", y = " + y + "]";
 	}
 
 }

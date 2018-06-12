@@ -1,13 +1,13 @@
 package ru.yandex.sergaidm;
 
-public class Square extends Shape {
+public class Rectangle extends Shape {
 
 	private Point a;
 	private Point b;
 	private Point c;
 	private Point d;
-	
-	public Square(Point a, Point b, Point c, Point d) {
+
+	public Rectangle(Point a, Point b, Point c, Point d) {
 		super();
 		this.a = a;
 		this.b = b;
@@ -15,16 +15,16 @@ public class Square extends Shape {
 		this.d = d;
 	}
 
-	public Square() {
+	public Rectangle() {
 		super();
-			}
-	
+	}
+
 	public Point getA() {
 		return a;
 	}
 
 	public void setA(Point a) {
-		a = a;
+		this.a = a;
 	}
 
 	public Point getB() {
@@ -32,7 +32,7 @@ public class Square extends Shape {
 	}
 
 	public void setB(Point b) {
-		b = b;
+		this.b = b;
 	}
 
 	public Point getC() {
@@ -40,7 +40,7 @@ public class Square extends Shape {
 	}
 
 	public void setC(Point c) {
-		c = c;
+		this.c = c;
 	}
 
 	public Point getD() {
@@ -48,23 +48,25 @@ public class Square extends Shape {
 	}
 
 	public void setD(Point d) {
-		d = d;
+		this.d = d;
 	}
 
 	@Override
-	public double getPerimetr() {
-		return a.distance(b) + b.distance(c) + c.distance(d)+ d.distance(a);
+	public double getPerimeter() {
+		return a.getDistance(b) + b.getDistance(c) + c.getDistance(d) + d.getDistance(a);
 	}
 
 	@Override
 	public double getArea() {
-		return Math.pow(a.distance(b), 2);
+		Triangle triangleOne = new Triangle(a, b, c);
+		Triangle triangleTwo = new Triangle(a, c, d);
+		return triangleOne.getArea() + triangleTwo.getArea();
 	}
 
 	@Override
 	public String toString() {
-		return "Square [A=" + a + ", B=" + b + ", C=" + c + ", D=" + d + ", getPerimetr()=" + getPerimetr()
-				+ ", getArea()=" + getArea() + "]";
+		return "Rectangle [A = " + a + ", B = " + b + ", C = " + c + ", D = " + d + ", perimeter = " + getPerimeter()
+				+ ", area = " + getArea() + "]";
 	}
 
 }

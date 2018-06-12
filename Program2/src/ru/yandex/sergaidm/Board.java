@@ -2,63 +2,66 @@ package ru.yandex.sergaidm;
 
 public class Board {
 
-	private Shape[] figure = new Shape[4];
+	private Shape[] board = new Shape[4];
 
-	public Board(Shape[] figure) {
+	public Board(Shape[] board) {
 		super();
-		this.figure = figure;
+		this.board = board;
 	}
 
 	public Board() {
 		super();
 	}
 
-	public Shape[] getFigure() {
-		return figure;
+	public Shape[] getBoard() {
+		return board;
 	}
 
-	public void setFigure(Shape[] figure) {
-		this.figure = figure;
+	public void setBoard(Shape[] board) {
+		this.board = board;
 	}
 
-	public void placeFigOnBoard(int board, Shape shape) {
-		if ((board >= 0) & (board < 4)) {
-			figure[board] = shape;
+	public void putShapeOnBoard(int position, Shape shape) {
+		if ((position >= 0) && (position < board.length) && (board[position] == null)) {
+			board[position] = shape;
 		}
 	}
 
-	public void delFigfromBoard(int board) {
-		if ((board >= 0) & (board < 4)) {
-			figure[board] = null;
+	public void deleteShapeFromBoard(int position) {
+		if ((position >= 0) && (position < board.length && (board[position] == null))) {
+			board[position] = null;
+			System.out.println("Shape deleted");
+		} else {
+			System.out.println("Wrong position");
 		}
 	}
 
-	public double areaOfAllFig() {
-
-		double s = 0;
-		for (int i = 0; i < figure.length; i++) {
-			if (figure[i] != null) {
-				s += figure[i].getArea();
+	public double areaOfAllShapes() {
+		double area = 0;
+		for (int i = 0; i < board.length; i++) {
+			if (board[i] != null) {
+				area += board[i].getArea();
 			}
 		}
-		return s;
+		return area;
 	}
 
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("\tInformation about figures on the board:" + System.lineSeparator() + System.lineSeparator());
-		for (int i = 0; i < figure.length; i++) {
+		for (int i = 0; i < board.length; i++) {
 			sb.append("  " + (i + 1) + " part - ");
 			String text = "";
-			if (figure[i] != null) {
+			if (board[i] != null) {
 				text = String.format("%-10.10s Perimeter = %-5.5s   Area = %.2f",
-						figure[i].getClass().getSimpleName() + ":", figure[i].getPerimetr(), figure[i].getArea());
+						board[i].getClass().getSimpleName() + ":", board[i].getPerimeter(), board[i].getArea());
 			} else {
 				text = "Free space on the board";
 			}
 			sb.append(text + System.lineSeparator());
 		}
-		sb.append(System.lineSeparator() + String.format("Total area of all figures on the board = %.2f", areaOfAllFig()));
+		sb.append(System.lineSeparator() + String.format("Total area of all figures on the board = %.2f", areaOfAllShapes()));
 		return sb.toString();
 	}
+	
 }

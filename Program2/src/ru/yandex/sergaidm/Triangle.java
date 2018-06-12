@@ -23,7 +23,7 @@ public class Triangle extends Shape {
 	}
 
 	public void setA(Point a) {
-		a = a;
+		this.a = a;
 	}
 
 	public Point getB() {
@@ -31,7 +31,7 @@ public class Triangle extends Shape {
 	}
 
 	public void setB(Point b) {
-		b = b;
+		this.b = b;
 	}
 
 	public Point getC() {
@@ -39,24 +39,23 @@ public class Triangle extends Shape {
 	}
 
 	public void setC(Point c) {
-		c = c;
+		this.c = c;
 	}
 
 	@Override
-	public double getPerimetr() {
-		return a.distance(b) + b.distance(c) + c.distance(a);
+	public double getPerimeter() {
+		return a.getDistance(b) + b.getDistance(c) + c.getDistance(a);
 	}
 
 	@Override
 	public double getArea() {
-
-		double polP = (a.distance(b) + b.distance(c) + c.distance(a)) / 2;
-		return Math.sqrt(polP * (polP - a.distance(b)) * (polP - b.distance(c)) * (polP - c.distance(a)));
+		double semiperimeter = (a.getDistance(b) + b.getDistance(c) + c.getDistance(a)) / 2;
+		return Math.sqrt(semiperimeter * (semiperimeter - a.getDistance(b)) * (semiperimeter - b.getDistance(c)) * (semiperimeter - c.getDistance(a)));
 	}
 
 	@Override
 	public String toString() {
-		return "Triangle [A=" + a + ", B=" + b + ", C=" + c + ", getPerimetr()=" + getPerimetr() + ", getArea()="
+		return "Triangle [A = " + a + ", B = " + b + ", C = " + c + ", perimeter = " + getPerimeter() + ", area = "
 				+ getArea() + "]";
 	}
 
