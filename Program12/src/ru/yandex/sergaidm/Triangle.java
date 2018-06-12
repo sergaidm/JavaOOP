@@ -42,22 +42,17 @@ public class Triangle {
 	}
 
 	public double getArea() {
-
 		double p = (a + b + c) / 2;
 		double s = Math.sqrt(p * (p - a) * (p - b) * (p - c));
 		return s;
-
 	}
 
 	public boolean realTriangle() {
-
-		boolean r;
 		if (((a + b) > c) & ((a + c) > b) & ((b + c) > a)) {
-			r = true;
+			return true;
 		} else {
-			r = false;
+			return false;
 		}
-		return r;
 	}
 
 	@Override
