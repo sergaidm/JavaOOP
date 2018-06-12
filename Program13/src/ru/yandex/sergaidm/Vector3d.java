@@ -41,30 +41,20 @@ public class Vector3d {
 		this.z = z;
 	}
 
-	public static Vector3d addition(Vector3d vector1, Vector3d vector2) {
-
-		Vector3d add = new Vector3d(vector1.getX() + vector2.getX(), vector1.getY() + vector2.getY(),
-				vector1.getZ() + vector2.getZ());
-
-		return add;
-
+	public static Vector3d addition(Vector3d vectorOne, Vector3d vectorTwo) {
+		return new Vector3d(vectorOne.getX() + vectorTwo.getX(), vectorOne.getY() + vectorTwo.getY(),
+				vectorOne.getZ() + vectorTwo.getZ());
 	}
 
-	public static double scalarMultiplication(Vector3d vector1, Vector3d vector2) {
-
-		double sm = (vector1.getX() * vector2.getX()) + (vector1.getY() * vector2.getY())
-				+ (vector1.getZ() * vector2.getZ());
-
-		return sm;
+	public static double scalarMultiplication(Vector3d vectorOne, Vector3d vectorTwo) {
+		return (vectorOne.getX() * vectorTwo.getX()) + (vectorOne.getY() * vectorTwo.getY())
+				+ (vectorOne.getZ() * vectorTwo.getZ());
 	}
 
-	public static Vector3d vectorMultiplication(Vector3d vector1, Vector3d vector2) {
-
-		Vector3d vm = new Vector3d((vector1.getY() * vector2.getZ()) - (vector1.getZ() * vector2.getY()),
-				(vector1.getZ() * vector2.getX()) - (vector1.getX() * vector2.getZ()),
-				(vector1.getX() * vector2.getY()) - (vector1.getY() * vector2.getX()));
-
-		return vm;
+	public static Vector3d vectorMultiplication(Vector3d vectorOne, Vector3d vectorTwo) {
+		return new Vector3d((vectorOne.getY() * vectorTwo.getZ()) - (vectorOne.getZ() * vectorTwo.getY()),
+				(vectorOne.getZ() * vectorTwo.getX()) - (vectorOne.getX() * vectorTwo.getZ()),
+				(vectorOne.getX() * vectorTwo.getY()) - (vectorOne.getY() * vectorTwo.getX()));
 	}
 
 	@Override
