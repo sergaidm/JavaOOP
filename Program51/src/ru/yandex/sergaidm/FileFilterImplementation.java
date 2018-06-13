@@ -3,11 +3,11 @@ package ru.yandex.sergaidm;
 import java.io.File;
 import java.io.FileFilter;
 
-public class MyFileFilter implements FileFilter {
+public class FileFilterImplementation implements FileFilter {
 
 	private String[] filteredArray;
 
-	public MyFileFilter(String... filteredArray) {
+	public FileFilterImplementation(String... filteredArray) {
 		super();
 		this.filteredArray = filteredArray;
 	}

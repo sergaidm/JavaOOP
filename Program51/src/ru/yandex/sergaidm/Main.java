@@ -1,10 +1,5 @@
 package ru.yandex.sergaidm;
 
-/*Write a program that copies files with a predefined 
- * extension (for example, only txt) from the source directory to the 
- * directory-receiver./
- */
-
 import java.io.File;
 import java.io.IOException;
 
@@ -12,12 +7,11 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		MyFileFilter mFF = new MyFileFilter("txt");
-		File folderSource = new File("E:/Source");
-		File folderReceiver = new File("E:/Receiver");
-
+		FileFilterImplementation ffi = new FileFilterImplementation("txt");
+		File folderSource = new File("folderSource");
+		File folderReceiver = new File("folderReceiver");
 		try {
-			FileCopy.folderCopy(folderSource, folderReceiver, mFF);
+			FileOperation.folderCopy(folderSource, folderReceiver, ffi);
 		} catch (IOException e) {
 			System.out.println(e);
 		}
