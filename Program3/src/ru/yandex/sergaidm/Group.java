@@ -34,36 +34,33 @@ public class Group {
 	}
 
 	public boolean addStudentToGroup(Student student, int place) throws GroupException {
-		boolean r = false;
+		boolean result = false;
 		for (Student anotherStudent : group) {
 			if (place > group.length) {
 				throw new GroupException("In group there are no more free places");
 			} else if (group[place] == null) {
 				group[place] = student;
 				System.out.println("The student is added to " + (place + 1) + " place of the group");
-				return r = true;
+				return result = true;
 			}
 			if (group[place] != null) {
 				System.out.println("Impossible to add student to " + (place + 1) + " place of the group");
 				throw new GroupException("This place of group is taken by another student");
 			}
 		}
-		return r;
+		return result;
 	}
 
-	public void delStudentfromGroup(Student student, int place) throws GroupException {
-
+	public void deleteStudentFromGroup(Student student, int place) throws GroupException {
 		if (place >= 0 & place < group.length) {
 			group[place] = null;
 			System.out.println("The " + (place + 1) + " student is expelled from the group");
 		} else {
 			throw new GroupException("There is no such student in the group");
 		}
-
 	}
 
 	public Student searchStudent(String surname) {
-
 		for (Student student : group) {
 			if (student != null && student.getSurname().equals(surname)) {
 				return student;
@@ -73,19 +70,18 @@ public class Group {
 	}
 
 	public Student sortingOfStudents() {
-
-		Student st = new Student();
+		Student student = new Student();
 		for (int i = 1; i < group.length; i++) {
 			for (int j = group.length - 1; j >= i; j--) {
 				if (group[j - 1] != null && group[j] != null
 						&& group[j - 1].getSurname().compareTo((group[j].getSurname())) > 0) {
-					st = group[j - 1];
+					student = group[j - 1];
 					group[j - 1] = group[j];
-					group[j] = st;
+					group[j] = student;
 				}
 			}
 		}
-		return st;
+		return student;
 	}
 
 	@Override

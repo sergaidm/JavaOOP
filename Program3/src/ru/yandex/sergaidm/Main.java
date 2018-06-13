@@ -1,12 +1,5 @@
 package ru.yandex.sergaidm;
 
-/*Create a class Human. Create a class Student that extends class Human.
- Create a class Group that contains an array of 10 objects of class Student.
- Create methods for adding, deleting, and searching students by surname.
- If you try to add the eleventh student you must create custom exception class 
- and process it. Determine toString() method for Group class so that it displays 
- a list of students alphabetically.*/
-
 public class Main {
 	public static void main(String[] args) {
 
@@ -51,7 +44,7 @@ public class Main {
 		System.out.println();
 
 		try {
-			gr.delStudentfromGroup(student, 5);
+			gr.deleteStudentFromGroup(student, 5);
 		} catch (GroupException e) {
 			System.out.println(e);
 		}
