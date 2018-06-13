@@ -40,29 +40,29 @@ public class Stack {
 	public void setBlackList(BlackList blackList) {
 		this.blackList = blackList;
 	}
-	
+
 	public boolean stackEmpty() {
 		for (int i = 0; i < stack.length; i++) {
 			if (stack[i] != null) {
-				return  false;
+				return false;
 			}
 		}
 		return true;
 	}
 
-	public void addToStack(Object obj, BlackList bl) throws ArrayIndexOutOfBoundsException {
+	public void addToStack(Object object, BlackList bl) throws ArrayIndexOutOfBoundsException {
 		indicator = 0;
 		for (int i = 0; i < stack.length; i++) {
-			if (bl.checkObject(obj) == false) {
+			if (bl.checkObject(object) == false) {
 				if (stack[indicator] == null) {
-					stack[indicator] = obj;
+					stack[indicator] = object;
 					break;
 				}
 			}
 			indicator++;
 		}
-		if (bl.checkObject(obj) == true) {
-			System.out.println("This object is located in the 'Black list'. Adding impossible.");
+		if (bl.checkObject(object) == true) {
+			System.out.println("This object is located in the \"Black list\". Adding impossible.");
 		}
 		if (indicator == 10) {
 			throw new ArrayIndexOutOfBoundsException("There is no more space on the stack");
@@ -71,8 +71,8 @@ public class Stack {
 
 	public Object getElement() throws ArrayIndexOutOfBoundsException {
 		indicator = 9;
-		Object obj = new Object();
-		if (stackEmpty() == true) {
+		Object object = new Object();
+		if (stackEmpty()) {
 			throw new ArrayIndexOutOfBoundsException("Stack no more elements");
 		}
 		for (int i = 0; i < stack.length; i++) {
@@ -81,17 +81,17 @@ public class Stack {
 				continue;
 			}
 			if (stack[indicator] != null) {
-				obj = stack[indicator];
+				object = stack[indicator];
 				break;
 			}
 		}
-		return obj;
+		return object;
 	}
 
 	public Object getElementWithDelete() throws ArrayIndexOutOfBoundsException {
 		indicator = 9;
-		Object obj = new Object();
-		if (stackEmpty() == true) {
+		Object object = new Object();
+		if (stackEmpty()) {
 			throw new ArrayIndexOutOfBoundsException("Stack no more elements");
 		}
 		for (int i = 0; i < stack.length; i++) {
@@ -100,17 +100,17 @@ public class Stack {
 				continue;
 			}
 			if (stack[indicator] != null) {
-				obj = stack[indicator];
+				object = stack[indicator];
 				stack[indicator] = null;
 				break;
 			}
 		}
-		return obj;
+		return object;
 	}
 
 	public void printStack() {
-		for (Object obj : stack) {
-			System.out.println(obj);
+		for (Object object : stack) {
+			System.out.println(object);
 		}
 	}
 

@@ -4,38 +4,38 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		BlackList bl = new BlackList();
+		BlackList blackList = new BlackList();
 
-		bl.addClass(Integer.class);
-		bl.addClass(Character.class);
-		bl.addClass(String.class);
+		blackList.addClass(Integer.class);
+		blackList.addClass(Character.class);
+		blackList.addClass(String.class);
 		System.out.println("Classes in black list:" + System.lineSeparator());
-		bl.printBlackList();
+		blackList.printBlackList();
 
 		Character c = 'c';
 
-		Stack s = new Stack();
+		Stack stack = new Stack();
 		System.out.println(System.lineSeparator() + "Adding a forbidden object to the stack:");
-		s.addToStack(c, bl);
+		stack.addToStack(c, blackList);
 
 		Double d = 1.0;
-		s.addToStack(d, bl);
-		s.addToStack(bl, bl);
-		s.addToStack(d, bl);
-		s.addToStack(d, bl);
-		s.addToStack(bl, bl);
+		stack.addToStack(d, blackList);
+		stack.addToStack(blackList, blackList);
+		stack.addToStack(d, blackList);
+		stack.addToStack(d, blackList);
+		stack.addToStack(blackList, blackList);
 
 		System.out.println(System.lineSeparator() + "Stack with added objects:" + System.lineSeparator());
-		s.printStack();
+		stack.printStack();
 
-		System.out.println(System.lineSeparator() + "Getting an element from the stack: " + s.getElement());
+		System.out.println(System.lineSeparator() + "Getting an element from the stack: " + stack.getElement());
 
 		System.out.println(System.lineSeparator() + "Getting an element from the stack with its deleting: ");
-		System.out.println("1 - " + s.getElementWithDelete());
-		System.out.println("2 - " + s.getElementWithDelete());
+		System.out.println("1 - " + stack.getElementWithDelete());
+		System.out.println("2 - " + stack.getElementWithDelete());
 
 		System.out.println(System.lineSeparator() + "Stack without deleted objects:" + System.lineSeparator());
-		s.printStack();
+		stack.printStack();
 
 	}
 

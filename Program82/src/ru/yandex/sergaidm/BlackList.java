@@ -2,35 +2,35 @@ package ru.yandex.sergaidm;
 
 public class BlackList {
 
-	private Class[] blackList;
+	private Class<?>[] blackList;
 
 	public BlackList() {
 		blackList = new Class[0];
 	}
 
-	public void addClass(Class c) {
-		Class[] cl = new Class[blackList.length + 1];
-		System.arraycopy(blackList, 0, cl, 0, blackList.length);
-		cl[cl.length - 1] = c;
-		blackList = cl;
+	public void addClass(Class<?> classOne) {
+		Class<?>[] classTwo = new Class[blackList.length + 1];
+		System.arraycopy(blackList, 0, classTwo, 0, blackList.length);
+		classTwo[classTwo.length - 1] = classOne;
+		blackList = classTwo;
 	}
 
-	public boolean checkObject(Object obj) {
-		boolean res = true;
+	public boolean checkObject(Object object) {
+		boolean result = true;
 		for (int i = 0; i < blackList.length; i++) {
-			if (obj.getClass() == blackList[i]) {
-				res = true;
+			if (object.getClass() == blackList[i]) {
+				result = true;
 				break;
 			} else {
-				res = false;
+				result = false;
 			}
 		}
-		return res;
+		return result;
 	}
 
 	public void printBlackList() {
-		for (Class cl : blackList) {
-			System.out.println(cl);
+		for (Class<?> classOne : blackList) {
+			System.out.println(classOne);
 		}
 	}
 
