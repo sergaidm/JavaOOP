@@ -5,10 +5,10 @@ public class Circle extends Shape {
 	private Point a;
 	private Point b;
 
-	public Circle(Point a, Point o) {
+	public Circle(Point a, Point b) {
 		super();
 		this.a = a;
-		this.b = o;
+		this.b = b;
 	}
 
 	public Circle() {
