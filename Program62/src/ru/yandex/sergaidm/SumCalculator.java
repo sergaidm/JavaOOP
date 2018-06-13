@@ -30,20 +30,16 @@ public class SumCalculator implements Callable<Long> {
 	}
 
 	public static long multithreadingSumCalculation(int[] array, int threadsCount, int partLength) {
-
 		ExecutorService service = Executors.newFixedThreadPool(threadsCount);
-		CompletionService<Long> cS = new ExecutorCompletionService<>(service);
-		
+		CompletionService<Long> cS = new ExecutorCompletionService<>(service);		
 		int offset = 0;
 		long result = 0;
-
 		try {
 			for (int i = 0; i < threadsCount; i++) {
 				SumCalculator counter = new SumCalculator(array, offset, offset + partLength);
 				offset += partLength;
 				cS.submit(counter);
 			}
-
 			for (int i = 0; i < threadsCount; i++) {
 				try {
 					Future<Long> future = cS.take();

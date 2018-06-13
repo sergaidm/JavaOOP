@@ -1,6 +1,7 @@
 package ru.yandex.sergaidm;
 
 public class Main {
+	
 	public static final int THREADS_COUNT = 4;
 	public static final int PART_LENGTH = 20_000_000;
 
@@ -25,4 +26,5 @@ public class Main {
 		System.out.println("Time of simple sum calculation: " + (tEnd - tBegin) + " ms");
 
 	}
+	
 }
