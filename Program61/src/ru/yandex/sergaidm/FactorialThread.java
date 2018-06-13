@@ -3,6 +3,7 @@ package ru.yandex.sergaidm;
 import java.math.BigInteger;
 
 public class FactorialThread implements Runnable {
+
 	private int number;
 
 	public FactorialThread(int number) {
@@ -19,16 +20,16 @@ public class FactorialThread implements Runnable {
 	}
 
 	private BigInteger calculateFactorial() {
-		BigInteger fact = new BigInteger("1");
+		BigInteger factorial = new BigInteger("1");
 		for (int i = 2; i <= number; i++) {
-			fact = fact.multiply(new BigInteger("" + i));
+			factorial = factorial.multiply(new BigInteger("" + i));
 		}
-		return fact;
+		return factorial;
 	}
 
 	@Override
 	public void run() {
-		Thread thread = Thread.currentThread();
-		System.out.println(thread.getName() + ": " + number + "! = " + calculateFactorial());
+		System.out.println(Thread.currentThread().getName() + ": " + this.number + "! = " + this.calculateFactorial());
 	}
+
 }
