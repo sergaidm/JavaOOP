@@ -6,8 +6,11 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class Main {
+	
 	public static void main(String[] args) {
+		
 		System.out.println("The maximum number of text file numbers: " + maxNumberFromFile());
+		
 	}
 
 	public static int maxNumberFromFile() {
@@ -22,4 +25,5 @@ public class Main {
 		}
 		return max;
 	}
+	
 }
