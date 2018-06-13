@@ -36,55 +36,53 @@ public class Group implements MilitaryCommissar {
 	}
 
 	public boolean addStudentToGroup(Student student, int place) throws GroupException {
-		boolean r = false;
+		boolean result = false;
 		for (Student anotherStudent : group) {
 			if (place > group.length) {
 				throw new GroupException("In group there are no more free places");
 			} else if (group[place] == null) {
 				group[place] = student;
 				System.out.println("The student is added to " + (place + 1) + " place of the group");
-				return r = true;
+				return result = true;
 			}
 			if (group[place] != null) {
 				System.out.println("Impossible to add student to " + (place + 1) + " place of the group");
 				throw new GroupException("This place of group is taken by another student");
 			}
 		}
-		return r;
+		return result;
 	}
 
 	public void interactiveAddStudentToGroup() throws IllegalArgumentException {
-
 		for (;;) {
-			Student st = new Student();
+			Student student = new Student();
 			try {
-				String surname = InteractiveInputSurname();
-				Double age = InteractiveInputAge();
-				String gender = InteractiveInputGender();
-				String university = InteractiveInputUniversity();
-				int place = InteractiveInputPlace();
+				String surname = interactiveInputSurname();
+				Double age = interactiveInputAge();
+				String gender = interactiveInputGender();
+				String university = interactiveInputUniversity();
+				int place = interactiveInputPlace();
 
 				if (surname == null | age == 0 | gender == null | university == null) {
 					JOptionPane.showMessageDialog(null, "Incorrect parameters of student. Error adding to group");
 					throw new IllegalArgumentException();
 				} else {
-					st = new Student(surname, age, gender, university);
+					student = new Student(surname, age, gender, university);
 				}
 
 				try {
-					addStudentToGroup(st, place);
+					addStudentToGroup(student, place);
 				} catch (GroupException e) {
 					System.out.println(e);
 				}
 				break;
 			} finally {
-				System.out.println(st);
+				System.out.println(student);
 			}
 		}
-
 	}
 
-	private String InteractiveInputSurname() throws IllegalArgumentException {
+	private String interactiveInputSurname() throws IllegalArgumentException {
 		String surname = "";
 		for (;;) {
 			try {
@@ -99,7 +97,6 @@ public class Group implements MilitaryCommissar {
 					throw new IllegalArgumentException();
 				}
 				break;
-
 			} catch (IllegalArgumentException e) {
 				JOptionPane.showMessageDialog(null, "Invalid string format");
 			} catch (NullPointerException e) {
@@ -110,7 +107,7 @@ public class Group implements MilitaryCommissar {
 		return surname;
 	}
 
-	private double InteractiveInputAge() {
+	private double interactiveInputAge() {
 		double age = 0;
 		for (;;) {
 			try {
@@ -126,8 +123,7 @@ public class Group implements MilitaryCommissar {
 		return age;
 	}
 
-	private String InteractiveInputGender() throws IllegalArgumentException {
-
+	private String interactiveInputGender() throws IllegalArgumentException {
 		String gender = "";
 		for (;;) {
 			try {
@@ -157,7 +153,7 @@ public class Group implements MilitaryCommissar {
 		return gender;
 	}
 
-	private String InteractiveInputUniversity() throws IllegalArgumentException {
+	private String interactiveInputUniversity() throws IllegalArgumentException {
 		String university = "";
 		for (;;) {
 			try {
@@ -183,7 +179,7 @@ public class Group implements MilitaryCommissar {
 		return university;
 	}
 
-	private int InteractiveInputPlace() {
+	private int interactiveInputPlace() {
 		String input = "";
 		int place = 0;
 		for (;;) {
@@ -207,19 +203,16 @@ public class Group implements MilitaryCommissar {
 		return place;
 	}
 
-	public void delStudentfromGroup(Student student, int place) throws GroupException {
-
+	public void deleteStudentFromGroup(Student student, int place) throws GroupException {
 		if (place >= 0 & place < group.length) {
 			group[place] = null;
 			System.out.println("The " + (place + 1) + " student is expelled from the group");
 		} else {
 			throw new GroupException("There is no such student in the group");
 		}
-
 	}
 
 	public Student searchStudent(String surname) {
-
 		for (Student student : group) {
 			if (student != null && student.getSurname().equals(surname)) {
 				return student;
@@ -229,21 +222,21 @@ public class Group implements MilitaryCommissar {
 	}
 
 	public Student[] createStudent() {
-		Student[] st = new Student[group.length];
+		Student[] student = new Student[group.length];
 		for (int i = 0; i < group.length; i++) {
-			st[i] = group[i];
+			student[i] = group[i];
 		}
-		return st;
+		return student;
 	}
 
 	@Override
-	public Student[] isRecruit() {
-		Group gr = new Group();
+	public Student[] getCommissar() {
+		Group anotherGroup = new Group();
 		for (Student student : group) {
 			if (student != null && student.getAge() >= 18 && student.getGender().equalsIgnoreCase("male")) {
 				for (int j = 0; j < group.length; j++) {
 					try {
-						gr.addStudentToGroup(student, j);
+						anotherGroup.addStudentToGroup(student, j);
 						break;
 					} catch (GroupException e) {
 						System.out.println(e);
@@ -251,7 +244,7 @@ public class Group implements MilitaryCommissar {
 				}
 			}
 		}
-		return gr.createStudent();
+		return anotherGroup.createStudent();
 	}
 
 	@Override

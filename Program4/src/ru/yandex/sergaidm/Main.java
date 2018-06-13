@@ -1,10 +1,5 @@
 package ru.yandex.sergaidm;
 
-/*Improve the class Group by adding the ability to interactively adding an object.
- *Realize ability to sort the list of students by parameter (surname, age, etc.)
- *Realize interface Military Commissar, which will return array of students - young men 
- *from the group, who are over 18 years old.*/
-
 import javax.swing.JOptionPane;
 
 public class Main {
@@ -21,33 +16,33 @@ public class Main {
 		Student nine = new Student("Sergeeva", 19, "female", "KU");
 		Student ten = new Student("Konstantinova", 17, "female", "TU");
 
-		Group gr = new Group();
+		Group groupOne = new Group();
 
 		try {
-			gr.addStudentToGroup(one, 0);
-			gr.addStudentToGroup(two, 1);
-			gr.addStudentToGroup(three, 2);
-			gr.addStudentToGroup(four, 3);
-			gr.addStudentToGroup(five, 4);
-			gr.addStudentToGroup(six, 5);
-			gr.addStudentToGroup(seven, 6);
-			gr.addStudentToGroup(eight, 7);
-			gr.addStudentToGroup(nine, 8);
-			gr.addStudentToGroup(ten, 9);
+			groupOne.addStudentToGroup(one, 0);
+			groupOne.addStudentToGroup(two, 1);
+			groupOne.addStudentToGroup(three, 2);
+			groupOne.addStudentToGroup(four, 3);
+			groupOne.addStudentToGroup(five, 4);
+			groupOne.addStudentToGroup(six, 5);
+			groupOne.addStudentToGroup(seven, 6);
+			groupOne.addStudentToGroup(eight, 7);
+			groupOne.addStudentToGroup(nine, 8);
+			groupOne.addStudentToGroup(ten, 9);
 		} catch (GroupException e) {
 			System.out.println(e);
 		}
-		System.out.println("\n" + gr + "\n");
+		System.out.println("\n" + groupOne + "\n");
 
-		Group gr2 = new Group();
+		Group groupTwo = new Group();
 		for (int i = 0; i < 3; i++) {
 			try {
-				gr2.interactiveAddStudentToGroup();
+				groupTwo.interactiveAddStudentToGroup();
 			} catch (IllegalArgumentException e) {
 				System.out.println(e);
 			}
 		}
-		System.out.println("\n" + gr2 + "\n");
+		System.out.println("\n" + groupTwo + "\n");
 
 		Student[] students = { one, two, three, four, five, six, seven, eight, nine, null };
 		System.out.println("Unsorted array of students: " + "\n");
@@ -105,11 +100,10 @@ public class Main {
 			System.out.println(student);
 		}
 
-		MilitaryCommissar mc = gr;
-		Student[] arrayStudent = gr.isRecruit();
+		Student[] arrayStudent = groupOne.getCommissar();
 		System.out.println("\n" + "Students - recruits: " + "\n");
-		for (Student student2 : arrayStudent) {
-			System.out.println(student2);
+		for (Student student : arrayStudent) {
+			System.out.println(student);
 
 		}
 	}

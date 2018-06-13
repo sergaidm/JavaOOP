@@ -6,15 +6,6 @@ public class Sorting {
 
 	private static int parameter = 0;
 
-	public Sorting(int parameter) {
-		super();
-		Sorting.parameter = parameter;
-	}
-
-	public Sorting() {
-		super();
-	}
-
 	public int getParameter() {
 		return parameter;
 	}
@@ -77,11 +68,6 @@ public class Sorting {
 		Arrays.sort(studentArray, (a, b) -> CheckNull.checkNull(a, b) != CheckNull.NOT_NULL ? CheckNull.checkNull(a, b)
 				: -1 * (a.getUniversity().compareToIgnoreCase(b.getUniversity())));
 		return studentArray;
-	}
-
-	@Override
-	public String toString() {
-		return "Sorting [parameter=" + parameter + "]";
 	}
 
 }
