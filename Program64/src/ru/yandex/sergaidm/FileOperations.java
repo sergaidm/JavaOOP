@@ -29,7 +29,6 @@ public class FileOperations implements Runnable {
 
 	public static void createFiles(File folderSource, int number) {
 		File[] files = new File[number];
-
 		for (int i = 0; i < files.length; i++) {
 			String pathname = number + ".txt";
 			files[i] = new File(folderSource.getAbsolutePath() + "\\" + pathname);
@@ -56,7 +55,6 @@ public class FileOperations implements Runnable {
 			}
 			number--;
 		}
-
 	}
 
 	private static void fileCopy(File folderSource, File folderReceiver, int number) throws IOException {
@@ -81,9 +79,7 @@ public class FileOperations implements Runnable {
 	public static void multithreadingCopyingFiles(File folderSource, int number) {
 		File folderReceiver = new File("Receiver");
 		folderReceiver.mkdir();
-
 		ExecutorService pool = Executors.newFixedThreadPool(THREADS_COUNT);
-
 		try {
 			for (int i = 0; i < THREADS_COUNT; i++) {
 				FileOperations copying = new FileOperations(folderSource, folderReceiver, number);
@@ -92,22 +88,17 @@ public class FileOperations implements Runnable {
 		} finally {
 			pool.shutdownNow();
 		}
-
 	}
 
 	@Override
 	public void run() {
-
-		Thread thr = Thread.currentThread();
-
 		try {
 			fileCopy(folderSource, folderReceiver, number);
-			System.out.println(thr.getName() + ": Files copied to receiver folder");
+			System.out.println(Thread.currentThread().getName() + ": Files copied to receiver folder");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println(thr.getName() + " completed the work");
-
+		System.out.println(Thread.currentThread().getName() + " completed the work");
 	}
 
 }
