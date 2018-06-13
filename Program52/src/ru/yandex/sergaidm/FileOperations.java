@@ -6,44 +6,66 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 
 public class FileOperations {
 
-	public static String textFromFile(File file) throws IOException {
-		String text = "";
-		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-			for (; (text = br.readLine()) != null;) {
-				return text;
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+	private static String textFromFile(File file) throws IOException {
+		if (file == null) {
+			throw new IllegalArgumentException("Empty file pointer");
 		}
-		return text;
-	}
-
-	public static String sameWords(String[] a, String[] b) {
 		StringBuilder sb = new StringBuilder();
-		String[] copy = Arrays.copyOf(a, b.length);
-		for (String word : b) {
-			for (int i = 0; i < copy.length; i++) {
-				if (word.equals(copy[i])) {
-					sb.append(word + " ");
-					copy[i] = "";
-					break;
-				}
+		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+			String text = "";
+			for (; (text = br.readLine()) != null;) {
+				sb.append(text);
+				sb.append(System.lineSeparator());
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		return sb.toString();
 	}
 
+	private static String[] getWords(String textline) {
+		String[] words = textline.split("[ .,\n!]");
+		return words;
+	}
+
+	private static boolean isWordsInText(String word, String text) {
+		String[] textArray = getWords(text);
+		for (String wordOne : textArray) {
+			if (word.equals(wordOne)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public static void saveToFile(String text, File file) {
+		if (file == null || text == null) {
+			throw new IllegalArgumentException("Empty file pointer");
+		}
 		try (PrintWriter pw = new PrintWriter(file)) {
 			pw.println(text);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Same words from two files saved to specified file");
+	}
+
+	public static void saveSameWords(File fileOne, File fileTwo, File fileThree) throws IOException {
+		if (fileOne == null || fileTwo == null || fileThree == null) {
+			throw new IllegalArgumentException("Empty file pointer");
+		}
+		String textOne = textFromFile(fileOne);
+		String textTwo = textFromFile(fileTwo);
+		StringBuilder sb = new StringBuilder();
+		String[] words = getWords(textOne);
+		for (String word : words) {
+			if (isWordsInText(word, textTwo)) {
+				sb.append(word + " ");
+			}
+		}
+		saveToFile(sb.toString(), fileThree);
 	}
 
 }
