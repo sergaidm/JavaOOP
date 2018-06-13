@@ -1,45 +1,37 @@
 package ru.yandex.sergaidm;
 
-/*Improve class Group by adding the ability to save group to file.*/
-
 import java.io.File;
 
 public class Main {
+
 	public static void main(String[] args) {
 
-		Student one = new Student("Ivanov", 17.5, "male", "KPI");
-		Student two = new Student("Petrov", 19.5, "male", "NAU");
-		Student three = new Student("Sidorov", 20, "male", "MSU");
-		Student four = new Student("Orlov", 21, "male", "UO");
-		Student five = new Student("Arbuzov", 22, "male", "BU");
-		Student six = new Student("Sokolov", 17, "male", "PU");
-		Student seven = new Student("Fedorova", 17.5, "female", "LU");
-		Student eight = new Student("Andreeva", 18, "female", "WU");
-		Student nine = new Student("Sergeeva", 19, "female", "KU");
-		Student ten = new Student("Konstantinova", 17, "female", "TU");
-
-		Group gr = new Group();
-
+		Group groupOne = new Group();
 		try {
-			gr.addStudentToGroup(one, 0);
-			gr.addStudentToGroup(two, 1);
-			gr.addStudentToGroup(three, 2);
-			gr.addStudentToGroup(four, 3);
-			gr.addStudentToGroup(five, 4);
-			gr.addStudentToGroup(six, 5);
-			gr.addStudentToGroup(seven, 6);
-			gr.addStudentToGroup(eight, 7);
-			gr.addStudentToGroup(nine, 8);
-			gr.addStudentToGroup(ten, 9);
+			groupOne.addStudentToGroup(new Student("Ivanov", 17.5, "male", "KPI"));
+			groupOne.addStudentToGroup(new Student("Petrov", 19.5, "male", "NAU"));
+			groupOne.addStudentToGroup(new Student("Sidorov", 20, "male", "MSU"));
+			groupOne.addStudentToGroup(new Student("Orlov", 21, "male", "UO"));
+			groupOne.addStudentToGroup(new Student("Arbuzov", 22, "male", "BU"));
+			groupOne.addStudentToGroup(new Student("Sokolov", 17, "male", "PU"));
+			groupOne.addStudentToGroup(new Student("Fedorova", 17.5, "female", "LU"));
+			groupOne.addStudentToGroup(new Student("Andreeva", 18, "female", "WU"));
+			groupOne.addStudentToGroup(new Student("Sergeeva", 19, "female", "KU"));
+			groupOne.addStudentToGroup(new Student("Konstantinova", 17, "female", "TU"));
 		} catch (GroupException e) {
-			System.out.println(e);
+			System.out.println(e.getMessage());
 		}
-		System.out.println("\n" + gr + "\n");
+		System.out.println("List of students being written to file:" + groupOne);
 
-		File groupList = new File("groupList.txt");
-		Group.saveToFile(gr, groupList);
-
-		System.out.println("Group list saved to specified file");
+		File folder = new File("Groups");
+		folder.mkdirs();
+		GroupDAO groupDAO = new GroupDAOTXTFileImplementation(folder);
+		GroupController controller = new GroupController(groupDAO);
+		controller.saveGroupToFile(groupOne);
+		System.out.println();
+		Group groupTwo = controller.loadGroupFromFile();
+		System.out.println("List of students being read from file:" + groupTwo);
 
 	}
+
 }

@@ -1,0 +1,10 @@
+Ivanov,17.5,male,KPI
+Petrov,19.5,male,NAU
+Sidorov,20.0,male,MSU
+Orlov,21.0,male,UO
+Arbuzov,22.0,male,BU
+Sokolov,17.0,male,PU
+Fedorova,17.5,female,LU
+Andreeva,18.0,female,WU
+Sergeeva,19.0,female,KU
+Konstantinova,17.0,female,TU
