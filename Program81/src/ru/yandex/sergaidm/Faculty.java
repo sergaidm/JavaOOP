@@ -23,8 +23,8 @@ public class Faculty implements Serializable {
 	}
 
 	public void printFaculty() {
-		for (Group gr : faculty) {
-			gr.printGroup();
+		for (Group group : faculty) {
+			group.printGroup();
 		}
 	}
 

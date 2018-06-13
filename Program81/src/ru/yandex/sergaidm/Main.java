@@ -3,6 +3,7 @@ package ru.yandex.sergaidm;
 import java.io.File;
 
 public class Main {
+	
 	public static void main(String[] args) {
 
 		File file = new File("Database.txt");		
@@ -36,4 +37,5 @@ public class Main {
 		facultyOfElectronics.readFaculty(file);
 		
 	}
+	
 }
