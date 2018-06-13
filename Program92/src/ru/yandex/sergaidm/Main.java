@@ -1,10 +1,10 @@
 package ru.yandex.sergaidm;
 
 public class Main {
+	
 	public static void main(String[] args) {
 
 		Group group = new Group();
-
 		group.addStudent("Ivanov", 22.5, 'm', "DP-51s");
 		group.addStudent("Petrov", 23, 'm', "DP-51s");
 		group.addStudent("Sidorov", 22.8, 'm', "DP-51s");
@@ -27,8 +27,8 @@ public class Main {
 		} catch (NullPointerException e) {
 			System.out.println(e);
 		}
-
 		group.sortingOfStudents();
 
 	}
+	
 }

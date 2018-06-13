@@ -6,15 +6,6 @@ public class Sorting {
 
 	private static int parameter = 0;
 
-	public Sorting(int parameter) {
-		super();
-		Sorting.parameter = parameter;
-	}
-
-	public Sorting() {
-		super();
-	}
-
 	public int getParameter() {
 		return parameter;
 	}

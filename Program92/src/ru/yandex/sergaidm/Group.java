@@ -42,6 +42,7 @@ public class Group {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Input parameter of sorting from 1 to 4: ");
 		int parameter = sc.nextInt();
+		sc.close();
 		if (parameter == 1) {
 			Sorting.ascendingSortingBySurname(group);
 		} else if (parameter == 2) {

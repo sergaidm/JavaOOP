@@ -1,6 +1,7 @@
 package ru.yandex.sergaidm;
 
 public interface CheckNull {
+	
 	public int NOT_NULL = 2;
 
 	public static int checkNull(Object a, Object b) {
@@ -15,4 +16,5 @@ public interface CheckNull {
 		}
 		return NOT_NULL;
 	}
+	
 }
