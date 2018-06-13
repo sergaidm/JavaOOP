@@ -1,10 +1,11 @@
 package ru.yandex.sergaidm;
 
 public class SingleThreadSorting implements Runnable {
+	
 	private int[] array;
 	private int begin;
 	private int end;
-	private Thread thr;
+	private Thread thread;
 	private int index;
 	private boolean stop = false;
 
@@ -13,13 +14,13 @@ public class SingleThreadSorting implements Runnable {
 		this.array = array;
 		this.begin = begin;
 		this.end = end;
-		thr = new Thread(this);
-		thr.start();
+		thread = new Thread(this);
+		thread.start();
 		this.index = begin;
 	}
 
-	public Thread getThr() {
-		return thr;
+	public Thread getThread() {
+		return thread;
 	}
 
 	public int peekElement() {
@@ -60,4 +61,5 @@ public class SingleThreadSorting implements Runnable {
 			this.stop = true;
 		}
 	}
+	
 }

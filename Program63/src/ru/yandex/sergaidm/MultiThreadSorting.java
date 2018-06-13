@@ -1,43 +1,44 @@
 package ru.yandex.sergaidm;
 
 public class MultiThreadSorting {
-	
-	static void sort(int[] array, int threadNumber) {
-		SingleThreadSorting[] threadarray = new SingleThreadSorting[threadNumber];
-		for (int i = 0; i < threadarray.length; i++) {
+
+	public static void sort(int[] array, int threadNumber) {
+		SingleThreadSorting[] threadArray = new SingleThreadSorting[threadNumber];
+		for (int i = 0; i < threadArray.length; i++) {
 			int size = array.length / threadNumber;
 			int begin = size * i;
 			int end = ((i + 1) * size);
 			if ((array.length - end) < size) {
 				end = array.length;
 			}
-			threadarray[i] = new SingleThreadSorting(array, begin, end);
+			threadArray[i] = new SingleThreadSorting(array, begin, end);
 		}
-		for (int i = 0; i < threadarray.length; i++) {
+		for (int i = 0; i < threadArray.length; i++) {
 			try {
-				threadarray[i].getThr().join();
+				threadArray[i].getThread().join();
 			} catch (InterruptedException e) {
 				System.out.println(e);
 			}
 		}
-		System.arraycopy(mergeArrays(array, threadarray), 0, array, 0, array.length);
+		System.arraycopy(mergeArrays(array, threadArray), 0, array, 0, array.length);
 	}
 
-	private static int[] mergeArrays(int[] array, SingleThreadSorting[] threadarray) {
-		int[] arr = new int[array.length];
-		for (int i = 0; i < arr.length; i++) {
+	private static int[] mergeArrays(int[] arrayOne, SingleThreadSorting[] threadArray) {
+		int[] arrayTwo = new int[arrayOne.length];
+		for (int i = 0; i < arrayTwo.length; i++) {
 			int min = Integer.MAX_VALUE;
 			int k = -1;
-			for (int j = 0; j < threadarray.length; j++) {
-				if (!threadarray[j].isStop() && min > threadarray[j].peekElement()) {
-					min = threadarray[j].peekElement();
+			for (int j = 0; j < threadArray.length; j++) {
+				if (!threadArray[j].isStop() && min > threadArray[j].peekElement()) {
+					min = threadArray[j].peekElement();
 					k = j;
 				}
 			}
 			if (k != -1) {
-				arr[i] = threadarray[k].pollElement();
+				arrayTwo[i] = threadArray[k].pollElement();
 			}
 		}
-		return arr;
+		return arrayTwo;
 	}
+	
 }
