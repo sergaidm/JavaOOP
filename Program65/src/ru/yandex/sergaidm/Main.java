@@ -9,5 +9,6 @@ public class Main {
 		File file = new File(".");
 		FileWatcher fw = new FileWatcher(file);
 		fw.startFileWatcher();
+		
 	}
 }
