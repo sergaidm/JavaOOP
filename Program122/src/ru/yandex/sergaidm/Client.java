@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class Client implements Runnable {
+	
     private Socket socket;
     private String answer;
     private Thread thread;
