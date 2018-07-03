@@ -1,1 +1,1 @@
-# Java Programming Courses "Prog.kiev.ua" - Java OOP.
+# Java Programming Courses "Prog.kiev.ua" - Java OOP
